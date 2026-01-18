@@ -30,6 +30,8 @@ def upload():
 @app.route("/plot")
 def plot():
     return send_file("cluster.png", mimetype="image/png")
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))  # Use Render assigned PORT
+    app.run(host="0.0.0.0", port=port)        # Bind to 0.0.0.0 for external access
+
